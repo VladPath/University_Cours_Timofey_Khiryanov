@@ -20,4 +20,7 @@ def bin_search(x:int):
     return l
 
 print(bin_search(x))
-    
+
+
+res = [1,3,4]
+print(type(max(res)))
