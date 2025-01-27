@@ -1,0 +1,51 @@
+
+
+from collections import deque
+
+
+def main():
+    g = read_graph()
+    start = input(' С какой вершины начать ')
+    while start not in g:
+        start = input(' Такой вершины нет, '+
+                      'С какой вершины начать ')
+        
+    shorted_distance = dijkstra(g,start)
+    finish = input(" К какой вершине построить путь? ")
+    while finish not in g:
+         start = input(' Такой вершины нет, '+
+                      'К какой вершине построить путь? ')
+    # shortesd_path = reveal_shortest_path(start,finish, shorted_distance)
+    
+def read_graph():
+    m = int(input(" Колл-во ребер")) # M - Кол-во ребер
+    g = {}
+    for i in range(m):
+        a,b,weight = input(' вершина a,b, и ее вес через пробел ').split()
+        weight = float(weight)
+        add_edge(g,a,b,weight)
+        add_edge(g,a,b,weight)
+
+def add_edge(g,a,b,weight):
+    if a not in g:
+        g[a] = {b:weight}
+    else:
+        g[a][b] += weight
+
+def dijkstra(g,start):
+    q = deque()
+    s = {}
+    s[start] = 0
+    q.append(start)
+    while q:
+        v =  q.pop()
+        for u in g[v]:
+            if u not in s or s[v]+g[v][u]<s[u]:
+                s[u] = s[v]+g[v][u]
+                q.append(u)
+                
+                
+
+
+if __name__ == '__main__':
+    main()
