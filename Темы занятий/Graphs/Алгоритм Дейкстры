@@ -5,17 +5,21 @@ from collections import deque
 
 def main():
     g = read_graph()
+    print(g)
     start = input(' С какой вершины начать ')
     while start not in g:
         start = input(' Такой вершины нет, '+
                       'С какой вершины начать ')
         
-    shorted_distance = dijkstra(g,start)
     finish = input(" К какой вершине построить путь? ")
     while finish not in g:
          start = input(' Такой вершины нет, '+
                       'К какой вершине построить путь? ')
-    # shortesd_path = reveal_shortest_path(start,finish, shorted_distance)
+    
+    shorted_distance = dijkstra(g,start)
+    shortesd_path = reveal_shortest_path(g, start,finish, shorted_distance)
+    
+    print(shortesd_path)
     
 def read_graph():
     m = int(input(" Колл-во ребер")) # M - Кол-во ребер
@@ -24,13 +28,15 @@ def read_graph():
         a,b,weight = input(' вершина a,b, и ее вес через пробел ').split()
         weight = float(weight)
         add_edge(g,a,b,weight)
-        add_edge(g,a,b,weight)
+        add_edge(g,b,a,weight)
+        print(g)
+    return g
 
 def add_edge(g,a,b,weight):
     if a not in g:
         g[a] = {b:weight}
     else:
-        g[a][b] += weight
+        g[a][b] = weight
 
 def dijkstra(g,start):
     q = deque()
@@ -43,8 +49,23 @@ def dijkstra(g,start):
             if u not in s or s[v]+g[v][u]<s[u]:
                 s[u] = s[v]+g[v][u]
                 q.append(u)
+    return s 
+    
+def reveal_shortest_path(g, start,finish, shorted_distance):
+    cur_weight = shorted_distance[finish]
+    cur_edge = finish
+    res = []
+    res.insert(0, cur_edge)
+    while cur_weight:
+        for k,v in g[cur_edge].items():
+            if cur_weight - v == shorted_distance[k]:
+                cur_weight = shorted_distance[k]
+                cur_edge = k
+                res.insert(0, cur_edge)
+            
                 
-                
+    return str(res)
+
 
 
 if __name__ == '__main__':
