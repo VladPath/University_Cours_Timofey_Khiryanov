@@ -170,18 +170,61 @@ arr = [[0]*4 for i in range(4)]
 
 arr_wrong = [[0]*4]*4
 
-"""
+
 s = 'abc'
 print(s[0])
-"""
+
 but they are immutable!
 s[0] = 'g'
+# mutable is list,dict,set
+# imutable is int, str, tupple, frozenset, complex, bool, float
+
+a = set([1,2,3,4])
+b = {2:'a'}
+
+c = ('moscow')
+a.add(4)
+print(c)
+
+if input() == c:
+    print('Ok')
+
+ascii(ord)
+print(ord('a'))
+import collections
+
+a = collections.deque()
+a.append(1)
+print(a)
+a.appendleft(0)
+print(a)
+
+# hash
+a = set()
+a.add(2)
+b = set([3])
+print(a)
+print(b.union(a))
+print(a.remove(2))
+print(a)
 """
-# mutable is list,int,dict,tuple
-# imutable is str, set
+# hash map aka dict
+
+a = {}
+b = {}
+
+a['alice'] = 25
+b['Max'] = 32
+
+print('alice' in a)
+print(a.pop('alice'))
+a['alice'] = 26
+a['alice'] = 27
+print(a)
 
 
     
+
 
     
 
