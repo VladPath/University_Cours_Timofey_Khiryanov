@@ -207,7 +207,6 @@ print(a)
 print(b.union(a))
 print(a.remove(2))
 print(a)
-"""
 # hash map aka dict
 
 a = {}
@@ -221,6 +220,52 @@ print(a.pop('alice'))
 a['alice'] = 26
 a['alice'] = 27
 print(a)
+
+a = {'alice':27, 'bob': 33}
+
+for i in a:
+    print(i, a[i])
+
+for v in a.values():
+    print(v)
+
+for k,v in a.items():
+    print(k,v)
+
+
+t = tuple([1,2,3])
+print(t)
+
+for i in t:
+    print(i) 
+    
+print(t[0])
+
+# imutable - str, int, tupple , bool, float, complex
+# mutable - list, dict, set
+
+# unique - dict,set
+
+import heapq
+
+min_heap = []
+
+heapq.heappush(min_heap, 1)
+heapq.heappush(min_heap, 2)
+heapq.heappush(min_heap, 0)
+heapq.heappush(min_heap, 9)
+heapq.heappush(min_heap, 10)
+heapq.heappush(min_heap, 102)
+
+print(min_heap[0])
+while min_heap:
+    print(heapq.heappop(min_heap))
+"""
+
+
+
+
+
 
 
     
