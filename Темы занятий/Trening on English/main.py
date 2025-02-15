@@ -263,8 +263,40 @@ while min_heap:
 """
 
 
+a = 1
+b = 1
 
+print(a==b, a is b)
+a = ['a']
+b = ['a']
+b.append('b')
+print(a==b, a is b)
 
+# filter принимает два аргумента функцию и итерируемый объект
+# фильтрует итерируемый объект на основании функции
+from functools import reduce, cache
+from time import time
+
+arr = [1,2,3,4,5,6,7,8,9,10]
+
+filtered_arr = list(filter(lambda x: x%2==0, arr))
+print(filtered_arr)
+
+reduced_arr = reduce(lambda x,y: x+y, arr)
+print(reduced_arr)
+
+@cache
+def factorial(n):
+    return n* factorial(n-1) if n else 1
+
+start_time = time()
+print(factorial(20), time()-start_time)
+
+start_time = time()
+print(factorial(10), time()-start_time)
+
+start_time = time()
+print(factorial(30), time()-start_time)
 
 
 
