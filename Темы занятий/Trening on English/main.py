@@ -261,8 +261,7 @@ print(min_heap[0])
 while min_heap:
     print(heapq.heappop(min_heap))
 """
-
-
+"""
 a = 1
 b = 1
 
@@ -300,23 +299,110 @@ print(factorial(30), time()-start_time)
 
 
 
+Интрепритатор в пайтон производит компиляцию и только после 
+интрепритирует компилятор не обращает внимание на мат ошибки
+а только на синтаксические 
+и только интрепритатор построчно увидит мат ошибку
+
+print(123) !ф! - ошибка от компилятора тут
+a = 2/0 ошибка от интрепритатора тут
+
+
+глобальные и локальные переменные!
+
+a = 2+2
+b = 3
+def f(x):
+    z = 11
+    global a
+    print(a)
+    # print(globals())
+    print(locals())
     
+print(f(7))
 
 
-    
-
-
-
-
-
-
-
-
-
+try:
+    import no_such_module
+except ImportError as err:
+    print(f" 1 - ImportError: {err.__class__}")
+except ModuleNotFoundError as err:
+    print(f"2 - ModuleNotFoundError: {err.__class__}")
 
 
 
+try:
+    raise ExceptionGroup('Import group', [ModuleNotFoundError(), ImportError()])
+except* ModuleNotFoundError:
+    print("Handling ModuleNotFoundError")
+except* ImportError:
+    print("Handling ImportError")
+
+
+a = ['1']
+b = ['']
+c = ['', 1]
+
+print(all(a))
+print(all(b))
+print(all(c))
+
+print(any(a))
+print(any(b))
+print(any(c))
+
+
+value = 'mr. Иванов'
+print(repr(value)) # 'mr. Иванов'
+print(value) # mr. Иванов
+print(ascii(value))  # mr. \u0418\u0432\u0430\u043d\u043e\u0432
+
+a = 3
+
+print(bin(a))
+
+
+print(bytearray('Привет, Python!', 'utf-8') )
+
+a = 1
+b = int
+c = list
+
+print(callable(a))
+print(callable(b))
+print(callable(c))
+
+"""
 
 
 
-    
+# print(chr(97)) #a
+
+# Компиляция
+
+compileted = compile('print("Hello world")', '<string>', 'exec')
+print(compileted)
+
+# string = "Hello"
+# print(string.index('e'))# HELLO
+
+# delattr(string, '')
+# string.upper() # AttributeError
+
+# print(dir(str)) 
+
+print(divmod(10.3,3))
+
+x = 1
+print(eval('x+1'))
+
+
+
+arr = [1,2,3,4,5,6,7]
+
+list1 = [i for i in arr if i>3 and i<7]
+print(list1)
+
+list2 = list(filter(lambda x: x%2==0, arr))
+print(list2)
+

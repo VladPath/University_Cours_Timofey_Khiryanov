@@ -1,1 +1,1 @@
-time()-start_time
+*
