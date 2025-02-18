@@ -372,7 +372,7 @@ print(callable(a))
 print(callable(b))
 print(callable(c))
 
-"""
+
 
 
 
@@ -405,4 +405,125 @@ print(list1)
 
 list2 = list(filter(lambda x: x%2==0, arr))
 print(list2)
+
+x = 10.10312412213123124 / 2
+print(format(x,'.2f'))
+
+
+print(getattr(str, 'upper'))
+# print(globals())
+
+
+
+a = 'Hello world'
+
+# print(hash(a))
+
+
+
+# print(int(1,base=2)) 
+a = ["apple", "banana", "cherry"]
+
+x = iter(["apple", "banana", "cherry"])
+print(next(x))
+print(next(x))
+print(next(x))
+
+li = []
+for user_str in iter(input, "exit"):
+    li.append(user_str)
+    
+print(li)
+
+
+print(isinstance(1,int))
+
+class MyClass(list):
+    print('my class')
+    
+a = MyClass([1,2,3])
+
+print(issubclass(MyClass, list))
+
+
+
+a = {'a':1,'b':2}
+
+b = {1,2,3,4,5}
+
+iters = iter(b)
+
+
+for i in range(len(b)):
+    print(next(iters))
+
+
+
+def my_decorator(arg1,arg2):
+    def actual_decorator(function):
+        def wrapper():
+            # здесь можно использовать arg
+            print(arg1,arg2)
+            result = function()  # вызов оригинальной функции
+            return result
+        return wrapper
+    return actual_decorator
+        
+
+
+@my_decorator('info',10)
+def say_helo():
+    return ("hello")
+
+a = say_helo()
+print(a)
+
+class MyClass:
+    def __init__(self):
+        self._value = None
+ 
+    @property
+    def value(self):
+       
+        return self._value
+ 
+    @value.setter
+    def value(self, value):
+        self._value = value
+ 
+    @value.deleter
+    def value(self):
+        del self._value
+
+a = MyClass()
+a.value = 10
+print(a.value)
+delattr(a,'value') # value Удален!
+b = a
+print(b)
+
+a = 10
+b = a
+print(b)
+a = 11
+print(a)
+b = 'Одинадцать'
+"""
+
+from memory_profiler import profile
+
+@profile
+def my_func():
+    return [i for i in range(100)]
+
+@profile
+def fib(n):
+    return fib(n-1) + fib(n-2) if n > 1 else n
+
+print(fib(30))
+
+print(my_func())
+
+
+
 
