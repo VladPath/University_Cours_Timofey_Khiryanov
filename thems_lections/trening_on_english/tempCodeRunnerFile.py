@@ -1,8 +1,4 @@
+def fib(n):
+    return fib(n-1) + fib(n-2) if n > 1 else n
 
-    # @value.setter
-    # def value(self, value):
-    #     self._value = value
- 
-    # @value.deleter
-    # def value(self):
-    #     del self._value
+print(fib(10))
