@@ -1,5 +1,4 @@
-import sys
-import pytest
+import sys, os
 
 
 print("start")
@@ -17,3 +16,11 @@ print(sys.getsizeof(a)//1002400)
 
 print(sys.platform)
 
+print(os.getcwd())
+
+if not os.path.exists('dir-from-os'):
+    os.makedirs('dir-from-os')
+else:
+    print(os.path.exists('dir-from-os'))
+    
+print(os.listdir('dir-from-os'))

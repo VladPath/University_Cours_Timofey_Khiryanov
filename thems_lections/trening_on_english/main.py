@@ -61,7 +61,6 @@ ten devided on three will give remain 1
 print(10%3) = 1
 
 """
-import math 
 """
 print(-10%3)
 print(math.fmod(-10,3))
@@ -355,7 +354,6 @@ print(any(c))
 value = 'mr. Иванов'
 print(repr(value)) # 'mr. Иванов'
 print(value) # mr. Иванов
-print(ascii(value))  # mr. \u0418\u0432\u0430\u043d\u043e\u0432
 
 a = 3
 
@@ -511,9 +509,52 @@ b = 'Одинадцать'
 
 
 
+
+a = ['HeLLo']
+
+print( sum(1 for line in open('text.txt') for i in line if i.isupper()))
+
+
+*a, b, c = [1, 2]
+print(a, b, c)
+
+def func1(a,b,*args):
+    print(a,b,args)
+
+func1(9,8,7,6,5)
+
+def func2(a,b,**kwargs):
+    print(a,b,kwargs)
+    
+func2(1, 2, x=1, y=2)
+
+
+
+class Parent:
+    def __init__(self):
+        self.parent_attribute = 'Parent attribute'
+
+    def parent_method(self):
+        return self.parent_attribute
+
+class Child(Parent):
+    def __init__(self):
+        # Parent().__init__()
+        self.child_attribute = 'Child attribute'
+
+    def child_method(self):
+        return self.child_attribute
+    
+    def get_all_methods(self):
+        child = self.child_method()
+        parent = Parent().parent_method()
+        return child, parent
+
+child_obj = Child()
+print(child_obj.get_all_methods())  # Выведет "Parent method" и "Child method"
 """
 
+import os
+from glob import glob
 
-
-
-
+# print(os.getcwd())
