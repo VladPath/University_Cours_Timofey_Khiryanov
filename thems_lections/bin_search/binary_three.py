@@ -66,7 +66,35 @@ class BinThree:
     def get_bin_three(self, value):
         return [[self.get_bin_three(value.left),value.value, self.get_bin_three(value.right)] if value is not None else None]
              
+    def inorder(self,root):
+        if not root:
+            return
+        self.inorder(root.left)
+        print(root.value)
+        self.inorder(root.right)
     
+    def inorder_reverse(self,root):
+        if not root:
+            return
+        self.inorder(root.right)
+        print(root.value)
+        self.inorder(root.left)
+    
+    def preorder(self,root):
+        if not root:
+            return 
+        print(root.value)
+        self.preorder(root.left)
+        self.preorder(root.right)
+    
+    def postorder(self, root):
+        if not root:
+            return
+        
+        self.postorder(root.left)
+        self.postorder(root.right)
+        print(root.value)
+        
     
 root = ThreeNode(10)
 
@@ -83,6 +111,19 @@ print(bin_three.find_node(114))
 
 print(bin_three.find_minimum())
 print(bin_three.find_maximum())
+
+print('inorder')
+bin_three.inorder(bin_three.root)
+
+
+print('postorder ')
+bin_three.postorder(bin_three.root)
+
+print('preorder ')
+bin_three.preorder(bin_three.root)
+
+print('inorder reverse ')
+bin_three.inorder_reverse(bin_three.root)
 
 
         
